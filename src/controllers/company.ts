@@ -79,7 +79,6 @@ export const getSingleCompany = async (req:Request, res:Response, next:NextFunct
     try{
         const reg_no:any = req.query.reg_number;
         const findCompany = await Companies.findOne({ where: { reg_no:reg_no }})
-        console.log(findCompany)
         if(!findCompany){
             return res.status(404).json({
                 message: `Company not found`

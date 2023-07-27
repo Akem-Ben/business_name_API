@@ -4,7 +4,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import companyRoutes from './routes/companyRoute';
-import db from './config/database';
+import DATABASE_URL from './config/database';
 import { connect } from '@planetscale/database';
 import mysql2 from 'mysql2';
 
@@ -14,7 +14,7 @@ dotenv.config()
 const app = express();
 
 
-const connection = mysql2.createConnection(`${process.env.DATABASE_URL}`)
+const connection = mysql2.createConnection(`${DATABASE_URL}`)
 console.log('Connected to PlanetScale!')
 connection.end()
 

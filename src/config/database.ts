@@ -18,7 +18,7 @@ dotenv.config()
 const sequelize = new Sequelize(DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD, {
   dialect: "mysql",
   host: DATABASE_HOST,
-  port: 3306,
+  // port: 3306,
   dialectModule: mysql2,
   dialectOptions: {
     ssl: {

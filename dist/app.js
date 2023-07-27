@@ -9,12 +9,22 @@ const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const morgan_1 = __importDefault(require("morgan"));
 const companyRoute_1 = __importDefault(require("./routes/companyRoute"));
-const mysql2_1 = __importDefault(require("mysql2"));
+const database_1 = __importDefault(require("./config/database"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
-const connection = mysql2_1.default.createConnection(`${process.env.DATABASE_URL}`);
-console.log('Connected to PlanetScale!');
-connection.end();
+const syncDatabase = async () => {
+    try {
+        await database_1.default.authenticate();
+        console.log('Connected to the database.');
+        await database_1.default.sync({ force: false }).then(() => {
+            console.log('Database synced successfully');
+        });
+    }
+    catch (error) {
+        console.error('Unable to connect to the database:', error);
+    }
+};
+syncDatabase();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 app.use((0, morgan_1.default)("dev"));

@@ -4,7 +4,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import companyRoutes from './routes/companyRoute';
-import mysql2 from 'mysql2';
+import sequelize from './config/database';
 
 
 dotenv.config()
@@ -12,9 +12,19 @@ dotenv.config()
 const app = express();
 
 
-const connection = mysql2.createConnection(`${process.env.DATABASE_URL}`)
-console.log('Connected to PlanetScale!')
-connection.end()
+const syncDatabase = async () => {
+    try {
+     await sequelize.authenticate();
+     console.log('Connected to the database.');
+     await sequelize.sync({ force: false }).then(() => {
+         console.log('Database synced successfully');
+       });
+  
+    } catch (error) {
+     console.error('Unable to connect to the database:', error);
+    } 
+  }
+  syncDatabase()
 
 
 app.use(express.json())

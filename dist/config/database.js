@@ -11,7 +11,7 @@ dotenv_1.default.config();
 const sequelize = new sequelize_1.Sequelize(config_1.DATABASE_NAME, config_1.DATABASE_USERNAME, config_1.DATABASE_PASSWORD, {
     dialect: "mysql",
     host: config_1.DATABASE_HOST,
-    port: 3306,
+    // port: 3306,
     dialectModule: mysql2_1.default,
     dialectOptions: {
         ssl: {

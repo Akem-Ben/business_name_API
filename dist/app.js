@@ -12,7 +12,7 @@ const companyRoute_1 = __importDefault(require("./routes/companyRoute"));
 const mysql2_1 = __importDefault(require("mysql2"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
-const connection = mysql2_1.default.createConnection(`mysql://nhz45a0lhjpl72he83ai:pscale_pw_wz0iF1oXZX6XWWO9Qup8boYgTqWM0sTG3xXfAXbgt2g@aws.connect.psdb.cloud/verification?ssl={"rejectUnauthorized":false}`);
+const connection = mysql2_1.default.createConnection(`${process.env.DATABASE_URL}`);
 console.log('Connected to PlanetScale!');
 connection.end();
 app.use(express_1.default.json());

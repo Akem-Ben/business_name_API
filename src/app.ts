@@ -4,8 +4,6 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import companyRoutes from './routes/companyRoute';
-import DATABASE_URL from './config/database';
-import { connect } from '@planetscale/database';
 import mysql2 from 'mysql2';
 
 
@@ -14,7 +12,7 @@ dotenv.config()
 const app = express();
 
 
-const connection = mysql2.createConnection(`${DATABASE_URL}`)
+const connection = mysql2.createConnection(`mysql://qdxe5jd2nihxlij6ge7r:pscale_pw_CdgxJH67pDJBLp2E1KIYpOE2i8i2zxR4SZtaqZZ6RIi@aws.connect.psdb.cloud/verification?ssl={"rejectUnauthorized":true}`)
 console.log('Connected to PlanetScale!')
 connection.end()
 

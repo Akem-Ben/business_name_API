@@ -12,7 +12,7 @@ dotenv.config()
 const app = express();
 
 
-const connection = mysql2.createConnection(`mysql://qdxe5jd2nihxlij6ge7r:pscale_pw_CdgxJH67pDJBLp2E1KIYpOE2i8i2zxR4SZtaqZZ6RIi@aws.connect.psdb.cloud/verification?ssl={"rejectUnauthorized":true}`)
+const connection = mysql2.createConnection(`mysql://nhz45a0lhjpl72he83ai:pscale_pw_wz0iF1oXZX6XWWO9Qup8boYgTqWM0sTG3xXfAXbgt2g@aws.connect.psdb.cloud/verification?ssl={"rejectUnauthorized":false}`)
 console.log('Connected to PlanetScale!')
 connection.end()
 

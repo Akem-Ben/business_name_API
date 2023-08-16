@@ -77,7 +77,7 @@ export const getAllCompanies = async (req:Request, res: Response, next: NextFunc
 
 export const getSingleCompany = async (req:Request, res:Response, next:NextFunction)=>{
     try{
-        const reg_no:any = req.query.reg_number;
+        const reg_no:any = req.body.reg_number;
         const findCompany = await Companies.findOne({ where: { reg_no:reg_no }})
         if(!findCompany){
             return res.status(404).json({
